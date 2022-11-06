@@ -10,14 +10,14 @@
 #   distributed under the License is distributed on an "AS IS" BASIS,
 #   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #   See the License for the specific language governing permissions and
-#   limitations under the License.
+#   limitati ons under the License.
 import logging
 from pybatfish.datamodel import *
 from pybatfish.datamodel.answer import *
 from pybatfish.datamodel.flow import *
 from netcov import NetCovSession as Session
 
-SNAPSHOT_PATH = "fattree4"
+SNAPSHOT_PATH = "11-05-2022-16:58:52.txt.zip"
 
 def main():
     # set up snapshot in batfish 
@@ -42,7 +42,7 @@ def main():
     bf.cov.result()
 
     # generate a detailed report in SNAPSHOT_PATH/coverage
-    bf.cov.html_report()
+    # bf.cov.html_report()
 
 if __name__ == "__main__":
     logging.getLogger("pybatfish").setLevel(logging.WARN)

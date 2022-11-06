@@ -16,6 +16,7 @@ import warnings
 from typing import Iterable
 import pickle
 import os
+import datetime
 from dd.autoref import BDD, Function
 
 from ..datamodel import *
@@ -43,6 +44,21 @@ def control_plane_coverage(network: Network, tested_nodes: Iterable[DNode]) -> S
     # stats
     covered_lines = line_level_stats(covered_nodes)
     log_metrics(covered_lines, network, "Configuration coverage")
+    print(network.snapshot_path)
+    now = datetime.datetime.now().strftime("%m-%d-%Y-%H:%M:%S.txt")
+    print(now)
+    config_file = os.path.join(network.snapshot_path,'coverage', now)
+    with open(config_file,'w') as f:
+        for file_name in covered_lines.files2lines.keys():
+            lines_to_read = list(covered_lines.files2lines[file_name])
+            f.write(file_name + '\n')
+            with open(os.path.join(network.snapshot_path,file_name),'r') as cf:
+                for i, line in enumerate(cf):
+                    if i in lines_to_read:
+                        f.write(line)
+                    elif i > lines_to_read[-1]:
+                        break
+                f.write('\n')
     return covered_lines
 
 def weak_coverage(network: Network, tested_nodes: Iterable[DNode], metrics: List[str], enable_stats: bool = False) -> SourceLines:
