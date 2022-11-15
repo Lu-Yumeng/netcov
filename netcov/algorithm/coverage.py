@@ -43,23 +43,65 @@ def control_plane_coverage(network: Network, tested_nodes: Iterable[DNode]) -> S
     
     # stats
     covered_lines = line_level_stats(covered_nodes)
+    print(covered_lines.print())
     log_metrics(covered_lines, network, "Configuration coverage")
-    print(network.snapshot_path)
+    generate_new_test_suite(network, covered_lines)
+    return covered_lines
+
+def generate_new_test_suite(network: Network, covered_lines: SourceLines)->None:
     now = datetime.datetime.now().strftime("%m-%d-%Y-%H:%M:%S.txt")
-    print(now)
-    config_file = os.path.join(network.snapshot_path,'coverage', now)
-    with open(config_file,'w') as f:
-        for file_name in covered_lines.files2lines.keys():
-            lines_to_read = list(covered_lines.files2lines[file_name])
-            f.write(file_name + '\n')
+    new_config_dir = os.path.join(network.snapshot_path, 'new_configs')
+    if not os.path.exists(new_config_dir):
+        os.makedirs(new_config_dir)
+    start_line = float("inf")
+    end_line = float("-inf")
+    # only deal with router and interface part
+    # create and open the filed
+    for file_name in covered_lines.files2lines.keys():
+        config_file = os.path.join(new_config_dir,file_name[8:])
+        with open(config_file, 'w') as f:
+            lines_to_read = covered_lines.files2lines[file_name]
+            with open(os.path.join(network.snapshot_path,file_name),'r') as cf:
+                start_line = float("inf")
+                end_line = float("inf")
+                flag = 1
+                for i, line in enumerate(cf):
+                    # record the fist line
+                    if line.startswith("interface"):
+                        start_line = min(start_line,i)
+                    # check which lines needed to be written
+                    # header should be added to the set
+                    if i < start_line:
+                        lines_to_read.add(i)
+                    # body
+                    else:
+                        if line.startswith("router bgp"):
+                            end_line = i
+                        if i >= end_line and flag:
+                            end_line = max(end_line,i)
+
+                        if i <= end_line:
+                            if not line.startswith(" ") and not line.startswith("!"):
+                                begin = i
+                            elif line.startswith(" "):
+                                continue
+                            # line starts with !
+                            elif line.startswith("!"):
+                                if set(range(begin,i)).intersection(lines_to_read):
+                                    lines_to_read.add(begin)
+                                    lines_to_read.add(i)
+                                if i == end_line:
+                                    end_line = i
+                                    flag = 0
+
+                        elif i > end_line:
+                            lines_to_read.add(i)
             with open(os.path.join(network.snapshot_path,file_name),'r') as cf:
                 for i, line in enumerate(cf):
                     if i in lines_to_read:
                         f.write(line)
-                    elif i > lines_to_read[-1]:
-                        break
-                f.write('\n')
-    return covered_lines
+
+
 
 def weak_coverage(network: Network, tested_nodes: Iterable[DNode], metrics: List[str], enable_stats: bool = False) -> SourceLines:
     covered_nodes = set()

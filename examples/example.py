@@ -17,7 +17,7 @@ from pybatfish.datamodel.answer import *
 from pybatfish.datamodel.flow import *
 from netcov import NetCovSession as Session
 
-SNAPSHOT_PATH = "11-05-2022-16:58:52.txt.zip"
+SNAPSHOT_PATH = "fattree4"
 
 def main():
     # set up snapshot in batfish 

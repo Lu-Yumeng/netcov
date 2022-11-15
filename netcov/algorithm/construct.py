@@ -146,6 +146,9 @@ def build_control_plane_datamodel(network: Network):
         + TYPE_NAMES_BGP_GROUP
         # + TYPE_NAMES_PREFIXLIST
 
+
+    # rec - dataframe with attribute Structure_Type, Stucture_Name and SourceLines
+    # add corresponding lines 
     for rec in structures_fr.itertuples():
         structure_type = rec.Structure_Type
         network.source.add_source_lines(rec.Source_Lines)
