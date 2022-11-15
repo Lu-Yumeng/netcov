@@ -321,6 +321,7 @@ def build_control_plane_datamodel(network: Network):
     for rec in ref_fr.itertuples():
         device_name = network.devicenames[rec.Source_Lines.filename]
         device = network.devices[device_name]
+        print(device_name)
         for line_number in rec.Source_Lines.lines:
             # assumption: only one structure can be referenced in a policy line
             device.referenced_lines[line_number] = device.referenced_configs[(rec.Structure_Type, rec.Structure_Name)]

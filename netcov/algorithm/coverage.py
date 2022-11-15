@@ -43,13 +43,14 @@ def control_plane_coverage(network: Network, tested_nodes: Iterable[DNode]) -> S
     
     # stats
     covered_lines = line_level_stats(covered_nodes)
-    print(covered_lines.print())
+    covered_lines_file = os.path.join(network.snapshot_path,"included_lines.txt")
+    with open(covered_lines_file,'w') as f:
+        f.write(covered_lines.print())
     log_metrics(covered_lines, network, "Configuration coverage")
     generate_new_test_suite(network, covered_lines)
     return covered_lines
 
 def generate_new_test_suite(network: Network, covered_lines: SourceLines)->None:
-    now = datetime.datetime.now().strftime("%m-%d-%Y-%H:%M:%S.txt")
     new_config_dir = os.path.join(network.snapshot_path, 'new_configs')
     if not os.path.exists(new_config_dir):
         os.makedirs(new_config_dir)
@@ -66,6 +67,7 @@ def generate_new_test_suite(network: Network, covered_lines: SourceLines)->None:
                 end_line = float("inf")
                 flag = 1
                 for i, line in enumerate(cf):
+                    i += 1
                     # record the fist line
                     if line.startswith("interface"):
                         start_line = min(start_line,i)
