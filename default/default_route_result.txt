@@ -1,0 +1,88 @@
+dst_ip:  10.3.1.4
+ACCEPTED
+1. node: edge-0000
+  ORIGINATED(default)
+  FORWARDED(Forwarded out interface: Serial0 with resolved next-hop IP: 70.0.0.0, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.0.0)])
+  TRANSMITTED(Serial0)
+2. node: aggregation-0000
+  RECEIVED(Serial0)
+  FORWARDED(Forwarded out interface: Serial2 with resolved next-hop IP: 70.0.16.0, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.16.0)])
+  TRANSMITTED(Serial2)
+3. node: core-0000
+  RECEIVED(Serial0)
+  FORWARDED(Forwarded out interface: Serial3 with resolved next-hop IP: 70.0.19.1, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.19.1)])
+  TRANSMITTED(Serial3)
+4. node: aggregation-0300
+  RECEIVED(Serial2)
+  FORWARDED(Forwarded out interface: Serial1 with resolved next-hop IP: 70.0.13.1, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.13.1)])
+  TRANSMITTED(Serial1)
+5. node: edge-0301
+  RECEIVED(Serial0)
+  ACCEPTED(Ethernet1)
+Succeed: route
+
+ACCEPTED
+1. node: edge-0000
+  ORIGINATED(default)
+  FORWARDED(Forwarded out interface: Serial0 with resolved next-hop IP: 70.0.0.0, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.0.0)])
+  TRANSMITTED(Serial0)
+2. node: aggregation-0000
+  RECEIVED(Serial0)
+  FORWARDED(Forwarded out interface: Serial3 with resolved next-hop IP: 70.0.20.0, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.20.0)])
+  TRANSMITTED(Serial3)
+3. node: core-0001
+  RECEIVED(Serial0)
+  FORWARDED(Forwarded out interface: Serial3 with resolved next-hop IP: 70.0.23.1, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.23.1)])
+  TRANSMITTED(Serial3)
+4. node: aggregation-0300
+  RECEIVED(Serial3)
+  FORWARDED(Forwarded out interface: Serial1 with resolved next-hop IP: 70.0.13.1, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.13.1)])
+  TRANSMITTED(Serial1)
+5. node: edge-0301
+  RECEIVED(Serial0)
+  ACCEPTED(Ethernet1)
+Succeed: route
+
+ACCEPTED
+1. node: edge-0000
+  ORIGINATED(default)
+  FORWARDED(Forwarded out interface: Serial1 with resolved next-hop IP: 70.0.2.0, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.2.0)])
+  TRANSMITTED(Serial1)
+2. node: aggregation-0001
+  RECEIVED(Serial0)
+  FORWARDED(Forwarded out interface: Serial2 with resolved next-hop IP: 70.0.24.0, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.24.0)])
+  TRANSMITTED(Serial2)
+3. node: core-0100
+  RECEIVED(Serial0)
+  FORWARDED(Forwarded out interface: Serial3 with resolved next-hop IP: 70.0.27.1, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.27.1)])
+  TRANSMITTED(Serial3)
+4. node: aggregation-0301
+  RECEIVED(Serial2)
+  FORWARDED(Forwarded out interface: Serial1 with resolved next-hop IP: 70.0.15.1, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.15.1)])
+  TRANSMITTED(Serial1)
+5. node: edge-0301
+  RECEIVED(Serial1)
+  ACCEPTED(Ethernet1)
+Succeed: route
+
+ACCEPTED
+1. node: edge-0000
+  ORIGINATED(default)
+  FORWARDED(Forwarded out interface: Serial1 with resolved next-hop IP: 70.0.2.0, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.2.0)])
+  TRANSMITTED(Serial1)
+2. node: aggregation-0001
+  RECEIVED(Serial0)
+  FORWARDED(Forwarded out interface: Serial3 with resolved next-hop IP: 70.0.28.0, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.28.0)])
+  TRANSMITTED(Serial3)
+3. node: core-0101
+  RECEIVED(Serial0)
+  FORWARDED(Forwarded out interface: Serial3 with resolved next-hop IP: 70.0.31.1, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.31.1)])
+  TRANSMITTED(Serial3)
+4. node: aggregation-0301
+  RECEIVED(Serial3)
+  FORWARDED(Forwarded out interface: Serial1 with resolved next-hop IP: 70.0.15.1, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.15.1)])
+  TRANSMITTED(Serial1)
+5. node: edge-0301
+  RECEIVED(Serial1)
+  ACCEPTED(Ethernet1)
+Succeed: route
