@@ -25,9 +25,16 @@ def convert_traceroute_traces(trs: Iterable[pd.DataFrame], print_stats=False) ->
     for tr in trs:
         tr_cnt += 1
         dst_ip = tr.Flow[0].dstIp
+        print("dst_ip: ",dst_ip)
         for path in tr.Traces[0]:
+            print(path)
             path_cnt += 1
-            action_stats[path[-1][-1]] += 1
+            try:
+                action_stats[path[-1][-1]] += 1
+                print("Succeed: route\n")
+            except:
+                print(path)
+                print("Fail: route\n")
 
             tested_nodes.update(convert_traceroute_path(path, dst_ip))
 
