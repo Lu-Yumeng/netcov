@@ -1,0 +1,32 @@
+interface Serial0
+  ip address 70.0.0.0/31
+  media-type gbic
+  speed 1000
+  duplex full
+  no negotiation auto
+  no cdp enable
+interface Serial1
+interface Serial2
+  ip address 70.0.16.1/31
+  media-type gbic
+  speed 1000
+  duplex full
+  no negotiation auto
+  no cdp enable
+interface Serial3
+  ip address 70.0.20.1/31
+  media-type gbic
+  speed 1000
+  duplex full
+  no negotiation auto
+  no cdp enable
+router bgp 10004
+  bgp bestpath as-path multipath-relax
+  maximum-paths eibgp 4
+  neighbor 70.0.0.1 remote-as 10006
+  neighbor 70.0.0.1 send-community
+  neighbor 70.0.16.0 remote-as 10000
+  neighbor 70.0.16.0 send-community
+  neighbor 70.0.20.0 remote-as 10001
+  neighbor 70.0.20.0 send-community
+end

@@ -1,0 +1,11 @@
+interface Loopback0
+interface Serial0
+interface Serial1
+interface Serial2
+interface Serial3
+interface Ethernet0
+ip prefix-list default-route seq 10 permit 0.0.0.0/0
+route-map backbone permit 10
+  match ip address prefix-list default-route
+router bgp 10000
+end

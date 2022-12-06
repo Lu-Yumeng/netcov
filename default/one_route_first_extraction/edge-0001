@@ -1,0 +1,23 @@
+interface Loopback0
+interface Serial0
+interface Serial1
+  ip address 70.0.3.1/31
+  media-type gbic
+  speed 1000
+  duplex full
+  no negotiation auto
+  no cdp enable
+interface Ethernet0
+interface Ethernet1
+router bgp 10007
+  neighbor 70.0.3.0 remote-as 10005
+  neighbor 70.0.3.0 send-community
+ip route 10.0.1.0/24 Null0
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+control-plane
+line con 0
+line aux 0
+line vty 0 4
+end
