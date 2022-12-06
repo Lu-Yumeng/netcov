@@ -1,0 +1,33 @@
+this is ra:
+ {'type': 'ebgp_sent', 'network': '0.0.0.0/0', 'nextHopIp': '20.0.0.1', 'srcIp': '20.0.0.1', 'dstNode': 'core-0000', 'dstIp': '20.0.0.0', 'srcProtocol': 'BGP', 'originType': 'egp', 'localPreference': 0, 'med': 0, 'originatorIp': '0.0.0.0', 'asPath': [[1]], 'communities': [], 'dstVrf': 'default', 'clusterList': []}
+General Info:
+ 1 20.0.0.1 core-0000
+Session is:
+ BgpSession@core-0000.default(10000, 20.0.0.0)-isp_1(1, 20.0.0.1)
+
+
+
+this is ra:
+ {'type': 'ebgp_sent', 'network': '0.0.0.0/0', 'nextHopIp': '20.0.0.3', 'srcIp': '20.0.0.3', 'dstNode': 'core-0001', 'dstIp': '20.0.0.2', 'srcProtocol': 'BGP', 'originType': 'egp', 'localPreference': 0, 'med': 0, 'originatorIp': '0.0.0.0', 'asPath': [[1]], 'communities': [], 'dstVrf': 'default', 'clusterList': []}
+General Info:
+ 1 20.0.0.3 core-0001
+Session is:
+ BgpSession@core-0001.default(10001, 20.0.0.2)-isp_1(1, 20.0.0.3)
+
+
+
+this is ra:
+ {'type': 'ebgp_sent', 'network': '0.0.0.0/0', 'nextHopIp': '20.0.0.5', 'srcIp': '20.0.0.5', 'dstNode': 'core-0100', 'dstIp': '20.0.0.4', 'srcProtocol': 'BGP', 'originType': 'egp', 'localPreference': 0, 'med': 0, 'originatorIp': '0.0.0.0', 'asPath': [[1]], 'communities': [], 'dstVrf': 'default', 'clusterList': []}
+General Info:
+ 1 20.0.0.5 core-0100
+Session is:
+ BgpSession@core-0100.default(10002, 20.0.0.4)-isp_1(1, 20.0.0.5)
+
+
+
+this is ra:
+ {'type': 'ebgp_sent', 'network': '0.0.0.0/0', 'nextHopIp': '20.0.0.7', 'srcIp': '20.0.0.7', 'dstNode': 'core-0101', 'dstIp': '20.0.0.6', 'srcProtocol': 'BGP', 'originType': 'egp', 'localPreference': 0, 'med': 0, 'originatorIp': '0.0.0.0', 'asPath': [[1]], 'communities': [], 'dstVrf': 'default', 'clusterList': []}
+General Info:
+ 1 20.0.0.7 core-0101
+Session is:
+ BgpSession@core-0101.default(10003, 20.0.0.6)-isp_1(1, 20.0.0.7)
