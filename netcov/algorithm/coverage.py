@@ -44,8 +44,8 @@ def control_plane_coverage(network: Network, tested_nodes: Iterable[DNode]) -> S
     # stats
     covered_lines = line_level_stats(covered_nodes)
     covered_lines_file = os.path.join(network.snapshot_path,"included_lines.txt")
-    # with open(covered_lines_file,'w') as f:
-    #     f.write(covered_lines.print())
+    with open(covered_lines_file,'w') as f:
+        f.write(covered_lines.print())
     log_metrics(covered_lines, network, "Configuration coverage")
     generate_new_test_suite(network, covered_lines)
     return covered_lines

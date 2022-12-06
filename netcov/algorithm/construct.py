@@ -380,18 +380,25 @@ def build_data_plane_datamodel(network: Network, ext_ras: List[Dict]=[]):
 
     # parse external bgp annoucements for fast lookup
     for ra in ext_ras:
+        print("this is ra: \n",ra)
         device_name = ra["dstNode"]
         peer_ip = ra["srcIp"]
         peer_as = ra["asPath"][0][0]
-        session = network.devices[device_name].find_bgp_session_with_as_ip(peer_as, peer_ip)
-        vrf_name = session.vrf
-        border_edge = network.get_bgp_edge(f"isp_{peer_as}", "default", device_name, vrf_name)
-        if border_edge is None:
-            logger.warning(f"WARNING: cannot find bgp edge for external route annoucement {ra}")
-            continue
-        prefix = ra["network"]
-        route = convert_external_ra(ra)
-        border_edge.bgp_routes[prefix].append(route)
+        print("General Info: \n", peer_as, peer_ip,device_name)
+        if (device_name == "core - 0000" or device_name == "core - 0100" ):
+            session = network.devices[device_name].find_bgp_session_with_as_ip(peer_as, peer_ip)
+            print("Session is: \n",session)
+            vrf_name = session.vrf
+            border_edge = network.get_bgp_edge(f"isp_{peer_as}", "default", device_name, vrf_name)
+            if border_edge is None:
+                logger.warning(f"WARNING: cannot find bgp edge for external route annoucement {ra}")
+                continue
+            prefix = ra["network"]
+            route = convert_external_ra(ra)
+            border_edge.bgp_routes[prefix].append(route)
+        else:
+            pass
+
 
     network.inited_dp = True
 
