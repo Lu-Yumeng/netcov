@@ -4,7 +4,7 @@ lines_to_read = set([65, 66, 67, 68, 69, 70, 71, 73, 74, 75, 76, 77, 78,
                  79, 81, 82, 83, 84, 85, 86, 87, 89, 90, 91, 92, 93,
                  94, 95, 97, 98, 99, 100, 101, 102, 103, 105, 107,
                  108, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122])
-with open("fattree4/configs/core-0000", 'r') as cf:
+with open("configs/core-0000", 'r') as cf:
     start_line = float("inf")
     end_line = float("inf")
     flag = 1

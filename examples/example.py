@@ -17,7 +17,7 @@ from pybatfish.datamodel.answer import *
 from pybatfish.datamodel.flow import *
 from netcov import NetCovSession as Session
 
-SNAPSHOT_PATH = "fattree4"
+SNAPSHOT_PATH = "fattree4_3"
 
 def main():
     # set up snapshot in batfish 
@@ -32,17 +32,19 @@ def main():
     # analyze network via batfish questions 
     # supported tests: traceroute
     bf.q.traceroute(startLocation="edge-0000", headers=HeaderConstraints(srcIps="edge-0000[Loopback0]", dstIps="edge-0301[Ethernet1]")).answer().frame()
-    # supported tests: trp
-    bf.q.testRoutePolicies(nodes="core-0000", policies="backbone", inputRoutes=[BgpRoute(network="0.0.0.0/0", originatorIp="0.0.0.0", originType="egp", protocol='bgp')], direction='in').answer().frame()
-    # supported tests: route inspection (routes/bgpRib)
-    bf.q.routes(nodes="edge-0000").answer().frame()
-    bf.q.bgpRib(nodes="edge-0000").answer().frame()
+
+    # # supported tests: trp
+    # bf.q.testRoutePolicies(nodes="core-0000", policies="backbone", inputRoutes=[BgpRoute(network="0.0.0.0/0", originatorIp="0.0.0.0", originType="egp", protocol='bgp')], direction='in').answer().frame()
+
+    # # supported tests: route inspection (routes/bgpRib)
+    # bf.q.routes(nodes="edge-0000").answer().frame()
+    # bf.q.bgpRib(nodes="edge-0000").answer().frame()
 
     # print coverage metrics to console
     bf.cov.result()
 
     # generate a detailed report in SNAPSHOT_PATH/coverage
-    # bf.cov.html_report()
+    bf.cov.html_report()
 
 if __name__ == "__main__":
     logging.getLogger("pybatfish").setLevel(logging.WARN)
