@@ -44,10 +44,11 @@ def control_plane_coverage(network: Network, tested_nodes: Iterable[DNode]) -> S
     # stats
     covered_lines = line_level_stats(covered_nodes)
     covered_lines_file = os.path.join(network.snapshot_path,"included_lines.txt")
-    with open(covered_lines_file,'w') as f:
-        f.write(covered_lines.print())
+    # with open(covered_lines_file,'w') as f:
+    #     f.write(covered_lines.print())
+    # print(covered_lines.print())
     log_metrics(covered_lines, network, "Configuration coverage")
-    generate_new_test_suite(network, covered_lines)
+    #generate_new_test_suite(network, covered_lines)
     return covered_lines
 
 def generate_new_test_suite(network: Network, covered_lines: SourceLines)->None:
@@ -226,7 +227,7 @@ def print_covered_config_elements(covered_nodes: List[DNode]):
     for node in covered_prefix_lists:
         print(f"  {node} {node.lines}")
 
-def log_metrics(covered_sources: SourceLines, network: Network, metric_name: str="Configuratio coverage", denominator: str="reachable") -> None:
+def log_metrics(covered_sources: SourceLines, network: Network, metric_name: str="Configuration coverage", denominator: str="reachable") -> None:
     if denominator == "reachable":
         denom = network.reachable_source
     elif denominator == "supported":

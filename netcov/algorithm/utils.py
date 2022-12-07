@@ -97,6 +97,7 @@ def convert_traceroute_path(path: Trace, dst_ip: str) -> List[DNode]:
     for hop in path:
         device_name = hop.node
         for step in hop.steps:
+            print("step by step procedure:\n",step)
             if step.action == "FORWARDED":
                 prefix = step.detail.routes[0].network
                 next_hop_ip = step.detail.forwardingDetail.resolvedNextHopIp

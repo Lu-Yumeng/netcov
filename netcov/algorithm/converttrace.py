@@ -17,7 +17,8 @@ from .utils import *
 
 
 
-def convert_traceroute_traces(trs: Iterable[pd.DataFrame], print_stats=False) -> List[DNode]:
+def convert_traceroute_traces(trs: Iterable[pd.DataFrame], print_stats=True) -> List[DNode]:
+    print("Come to covert_traceroute_Traces")
     tested_nodes = set()
     action_stats = defaultdict(int)
     tr_cnt = 0
