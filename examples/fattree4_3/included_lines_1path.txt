@@ -1,0 +1,68 @@
+configs/aggregation-0000(4, 5, 37, 38, 6, 7, 8, 9, 10, 41, 42, 20, 21, 22, 23, 24, 25, 26)
+configs/edge-0301(32, 33, 34, 4, 5, 38, 39, 6, 7, 8, 9, 10, 28, 29, 30, 31)
+configs/edge-0000(4, 5, 6, 38, 39, 7, 8, 9, 10)
+configs/aggregation-0300(39, 40, 41, 42, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26)
+configs/core-0000(32, 33, 34, 4, 5, 6, 7, 8, 9, 10, 50, 51, 56, 57, 28, 29, 30, 31)
+
+
+Come to covert_traceroute_Traces
+dst_ip:  10.3.1.4
+ACCEPTED
+1. node: edge-0000
+  ORIGINATED(default)
+  FORWARDED(Forwarded out interface: Serial0 with resolved next-hop IP: 70.0.0.0, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.0.0)])
+  TRANSMITTED(Serial0)
+2. node: aggregation-0000
+  RECEIVED(Serial0)
+  FORWARDED(Forwarded out interface: Serial2 with resolved next-hop IP: 70.0.16.0, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.16.0)])
+  TRANSMITTED(Serial2)
+3. node: core-0000
+  RECEIVED(Serial0)
+  FORWARDED(Forwarded out interface: Serial3 with resolved next-hop IP: 70.0.19.1, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.19.1)])
+  TRANSMITTED(Serial3)
+4. node: aggregation-0300
+  RECEIVED(Serial2)
+  FORWARDED(Forwarded out interface: Serial1 with resolved next-hop IP: 70.0.13.1, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.13.1)])
+  TRANSMITTED(Serial1)
+5. node: edge-0301
+  RECEIVED(Serial0)
+  ACCEPTED(Ethernet1)
+Succeed: route
+
+Traceroute stats:
+  Count of traceroutes: 1
+  Count of paths:       1
+      ACCEPTED(Ethernet1) : 1
+this is ra:
+ {'type': 'ebgp_sent', 'network': '0.0.0.0/0', 'nextHopIp': '20.0.0.1', 'srcIp': '20.0.0.1', 'dstNode': 'core-0000', 'dstIp': '20.0.0.0', 'srcProtocol': 'BGP', 'originType': 'egp', 'localPreference': 0, 'med': 0, 'originatorIp': '0.0.0.0', 'asPath': [[1]], 'communities': [], 'dstVrf': 'default', 'clusterList': []}
+General Info:
+ 1 20.0.0.1 core-0000
+this is ra:
+ {'type': 'ebgp_sent', 'network': '0.0.0.0/0', 'nextHopIp': '20.0.0.3', 'srcIp': '20.0.0.3', 'dstNode': 'core-0001', 'dstIp': '20.0.0.2', 'srcProtocol': 'BGP', 'originType': 'egp', 'localPreference': 0, 'med': 0, 'originatorIp': '0.0.0.0', 'asPath': [[1]], 'communities': [], 'dstVrf': 'default', 'clusterList': []}
+General Info:
+ 1 20.0.0.3 core-0001
+this is ra:
+ {'type': 'ebgp_sent', 'network': '0.0.0.0/0', 'nextHopIp': '20.0.0.5', 'srcIp': '20.0.0.5', 'dstNode': 'core-0100', 'dstIp': '20.0.0.4', 'srcProtocol': 'BGP', 'originType': 'egp', 'localPreference': 0, 'med': 0, 'originatorIp': '0.0.0.0', 'asPath': [[1]], 'communities': [], 'dstVrf': 'default', 'clusterList': []}
+General Info:
+ 1 20.0.0.5 core-0100
+this is ra:
+ {'type': 'ebgp_sent', 'network': '0.0.0.0/0', 'nextHopIp': '20.0.0.7', 'srcIp': '20.0.0.7', 'dstNode': 'core-0101', 'dstIp': '20.0.0.6', 'srcProtocol': 'BGP', 'originType': 'egp', 'localPreference': 0, 'med': 0, 'originatorIp': '0.0.0.0', 'asPath': [[1]], 'communities': [], 'dstVrf': 'default', 'clusterList': []}
+General Info:
+ 1 20.0.0.7 core-0101
+
+
+configs/aggregation-0000(4, 5, 37, 38, 6, 7, 8, 9, 10, 41, 42, 20, 21, 22, 23, 24, 25, 26)
+configs/edge-0301(32, 33, 34, 4, 5, 38, 39, 6, 7, 8, 9, 10, 28, 29, 30, 31)
+configs/edge-0000(4, 5, 6, 38, 39, 7, 8, 9, 10)
+configs/aggregation-0300(39, 40, 41, 42, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26)
+configs/core-0000(32, 33, 34, 4, 5, 6, 7, 8, 9, 10, 50, 51, 56, 57, 28, 29, 30, 31)
+
+
+Configuration coverage:
+    Covered lines:                         79/784 (10.08%)
+Breakdown:
+    route-map:                             0/0 (0.00%)
+    interface:                             63/636 (9.91%)
+    bgp neighbor:                          16/136 (11.76%)
+    ipv4 prefix-list:                      0/4 (0.00%)
+    route-map-clause:                      0/8 (0.00%)

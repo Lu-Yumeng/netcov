@@ -1,0 +1,21 @@
+interface Loopback0
+  ip address 10.4.0.0/32
+interface Serial0
+  ip address 70.0.16.0/31
+  media-type gbic
+  speed 1000
+  duplex full
+  no negotiation auto
+  no cdp enable
+interface Serial3
+  ip address 70.0.19.0/31
+  media-type gbic
+  speed 1000
+  duplex full
+  no negotiation auto
+  no cdp enable
+router bgp 10000
+  neighbor 70.0.16.1 remote-as 10004
+  neighbor 70.0.16.1 send-community
+  neighbor 70.0.19.1 remote-as 10016
+  neighbor 70.0.19.1 send-community
