@@ -1,0 +1,76 @@
+interface Loopback0
+  ip address 10.3.1.0/32
+!
+interface Serial0
+  ip address 70.0.13.1/31
+  media-type gbic
+  speed 1000
+  duplex full
+  no negotiation auto
+  no cdp enable
+!
+interface Serial1
+  ip address 70.0.15.1/31
+  media-type gbic
+  speed 1000
+  duplex full
+  no negotiation auto
+  no cdp enable
+!
+interface Ethernet0
+  ip address 10.3.1.2/31
+  media-type gbic
+  speed 1000
+  duplex full
+  no negotiation auto
+  no cdp enable
+!
+interface Ethernet1
+  ip address 10.3.1.4/31
+  media-type gbic
+  speed 1000
+  duplex full
+  no negotiation auto
+  no cdp enable
+!
+router bgp 10019
+  network 10.3.1.0/24
+  neighbor 70.0.13.0 remote-as 10016
+  neighbor 70.0.13.0 send-community
+  neighbor 70.0.15.0 remote-as 10017
+  neighbor 70.0.15.0 send-community
+!
+ip route 10.3.1.0/24 Null0
+!
+!
+!
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line vty 0 4
+ transport input ssh
+!
+!
+end

@@ -1,0 +1,94 @@
+interface Loopback0
+  ip address 10.4.0.1/32
+!
+interface Serial0
+  ip address 70.0.20.0/31
+  media-type gbic
+  speed 1000
+  duplex full
+  no negotiation auto
+  no cdp enable
+!
+interface Serial1
+  ip address 70.0.21.0/31
+  media-type gbic
+  speed 1000
+  duplex full
+  no negotiation auto
+  no cdp enable
+!
+interface Serial2
+  ip address 70.0.22.0/31
+  media-type gbic
+  speed 1000
+  duplex full
+  no negotiation auto
+  no cdp enable
+!
+interface Serial3
+  ip address 70.0.23.0/31
+  media-type gbic
+  speed 1000
+  duplex full
+  no negotiation auto
+  no cdp enable
+!
+interface Ethernet0
+  ip address 20.0.0.2/31
+  media-type gbic
+  speed 1000
+  duplex full
+  no negotiation auto
+  no cdp enable
+!
+ip prefix-list default-route seq 10 permit 0.0.0.0/0
+!
+route-map backbone permit 10
+  match ip address prefix-list default-route
+!
+router bgp 10001
+  neighbor 70.0.20.1 remote-as 10004
+  neighbor 70.0.20.1 send-community
+  neighbor 70.0.21.1 remote-as 10008
+  neighbor 70.0.21.1 send-community
+  neighbor 70.0.22.1 remote-as 10012
+  neighbor 70.0.22.1 send-community
+  neighbor 70.0.23.1 remote-as 10016
+  neighbor 70.0.23.1 send-community
+  neighbor 20.0.0.3 remote-as 1
+  neighbor 20.0.0.3 route-map backbone in
+  aggregate-address 10.0.0.0 255.0.0.0
+!
+!
+!
+!
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line vty 0 4
+ transport input ssh
+!
+!
+end

@@ -1,0 +1,35 @@
+configs/edge-0000(4, 5, 6, 7, 8, 9, 10, 38, 39)
+configs/edge-0301(32, 33, 34, 4, 5, 38, 39, 6, 7, 8, 9, 10, 28, 29, 30, 31)
+configs/aggregation-0000(4, 5, 6, 7, 8, 41, 42, 9, 10, 37, 38, 20, 21, 22, 23, 24, 25, 26)
+configs/core-0000(32, 33, 34, 4, 5, 6, 7, 8, 9, 10, 50, 51, 56, 57, 28, 29, 30, 31)
+configs/aggregation-0300(39, 40, 41, 42, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26)
+
+
+step by step procedure:
+ ORIGINATED(default)
+step by step procedure:
+ FORWARDED(Forwarded out interface: Serial0 with resolved next-hop IP: 70.0.0.0, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.0.0)])
+step by step procedure:
+ TRANSMITTED(Serial0)
+step by step procedure:
+ RECEIVED(Serial0)
+step by step procedure:
+ FORWARDED(Forwarded out interface: Serial2 with resolved next-hop IP: 70.0.16.0, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.16.0)])
+step by step procedure:
+ TRANSMITTED(Serial2)
+step by step procedure:
+ RECEIVED(Serial0)
+step by step procedure:
+ FORWARDED(Forwarded out interface: Serial3 with resolved next-hop IP: 70.0.19.1, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.19.1)])
+step by step procedure:
+ TRANSMITTED(Serial3)
+step by step procedure:
+ RECEIVED(Serial2)
+step by step procedure:
+ FORWARDED(Forwarded out interface: Serial1 with resolved next-hop IP: 70.0.13.1, Routes: [bgp (Network: 10.3.1.0/24, Next Hop: ip 70.0.13.1)])
+step by step procedure:
+ TRANSMITTED(Serial1)
+step by step procedure:
+ RECEIVED(Serial0)
+step by step procedure:
+ ACCEPTED(Ethernet1)
